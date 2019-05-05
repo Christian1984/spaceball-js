@@ -1,9 +1,9 @@
 class GameObject
 {
-    constructor(xPos, yPos)
+    constructor(xPos, yPos, xVel, yVel)
     {
         this.pos = {x: xPos, y: yPos};
-        this.vel = {x: 0, y: 0};
+        this.vel = {x: xVel, y: yVel};
     }
 
     update()
