@@ -9,16 +9,19 @@ class Paddle extends GameObject
 
     moveLeft()
     {
-        this.move(-PADDLE_VEL);
+        this.vel.x -= PADDLE_VEL;
     }
 
     moveRight()
     {
-        this.move(PADDLE_VEL);
+        this.vel.x += PADDLE_VEL;
     }
 
-    move(xVel)
+    update()
     {
+        super.update();
+        this.vel.x = 0;
+
         if (this.pos.x - this.width / 2 < 0)
         {
             this.pos.x = this.width / 2
@@ -27,16 +30,6 @@ class Paddle extends GameObject
         {
             this.pos.x = width - this.width / 2
         }
-        else
-        {
-            this.vel.x += xVel;
-        }
-    }
-
-    update()
-    {
-        super.update();
-        this.vel.x = 0;
     }
 
     show()
