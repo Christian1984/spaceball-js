@@ -6,6 +6,7 @@ class GameManager
         this.paddle = paddle;
         this.targets = targets;
 
+        this.gameRunning = false;
         this.score = 0;
     }
 

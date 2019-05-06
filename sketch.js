@@ -1,5 +1,6 @@
 const CANVAS_WIDTH = 800;
 const CANVAS_HEIGHT = 600;
+const TEXT_SIZE = 12;
 
 const BALL_RADIUS = 10;
 const BALL_XVEL = 3;
@@ -74,4 +75,8 @@ function draw()
             targets[i].show();
         }
     }
+
+    fill(255);
+    textSize(TEXT_SIZE);
+    text("Score: " + gameManager.score + "\nFramerate: " + frameRate().toFixed(1), TEXT_SIZE, 2 * TEXT_SIZE);
 }

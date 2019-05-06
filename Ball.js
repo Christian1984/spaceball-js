@@ -70,8 +70,12 @@ class Ball extends GameObject
 
     die()
     {
-        //TODO
         console.warn("AHHHHHHHHHHHHHHHH! I'm dead!");
+
+        if (gameManager)
+        {
+            gameManager.restart();
+        }
     }
 
     update()
@@ -91,6 +95,12 @@ class Ball extends GameObject
             {
                 targets[i].die();
                 this.yBounce();
+
+                if (gameManager)
+                {
+                    gameManager.addScore();
+                }
+                
                 break;
             }
         }

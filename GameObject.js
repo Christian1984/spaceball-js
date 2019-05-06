@@ -2,10 +2,17 @@ class GameObject
 {
     constructor(xPos, yPos, xVel, yVel)
     {
+        this.gameManager = undefined;
+        
         this.startPos = createVector(xPos, yPos);
         this.startVel = createVector(xVel, yVel);
 
         this.reset();
+    }
+
+    setGameManager(gameManager)
+    {
+        this.gameManager = gameManager;
     }
 
     update()
