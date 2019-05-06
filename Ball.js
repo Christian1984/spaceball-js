@@ -34,8 +34,7 @@ class Ball extends GameObject
             this.pos.y = this.radius;
             this.yBounce();
         }
-
-        if (this.pos.y + this.radius >= height)
+        else if (this.pos.y + this.radius >= height)
         {
             this.die();
         }
@@ -53,7 +52,7 @@ class Ball extends GameObject
     xBounce()
     {
         super.undoUpdate();
-        
+
         let rand = random(0.8, 1.2);
         this.vel.x *= -rand;
         this.vel.y /= rand;
@@ -71,7 +70,7 @@ class Ball extends GameObject
 
         this.stayInBounds();
 
-        if (this.isCollidingWith(paddle))
+        if (this.isCollidingWith(paddle) && this.vel.y > 0)
         {
             this.yBounce();
         }

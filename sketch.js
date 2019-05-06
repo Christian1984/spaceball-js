@@ -1,17 +1,17 @@
-const CANVAS_WIDTH = 400;
-const CANVAS_HEIGHT = 300;
+const CANVAS_WIDTH = 800;
+const CANVAS_HEIGHT = 600;
 
-const BALL_RADIUS = 5;
-const BALL_XVEL = 1.5;
-const BALL_YVEL = 1;
+const BALL_RADIUS = 10;
+const BALL_XVEL = 3;
+const BALL_YVEL = 2;
 
-const PADDLE_WIDTH = 30;
-const PADDLE_HEIGHT = 10;
-const PADDLE_VEL = 5;
+const PADDLE_WIDTH = 60;
+const PADDLE_HEIGHT = 20;
+const PADDLE_VEL = 10;
 
 const TARGET_COLS = 10;
 const TARGET_ROWS = 5;
-const TARGET_HEIGHT = 10;
+const TARGET_HEIGHT = 20;
 
 let ball;
 let paddle;
