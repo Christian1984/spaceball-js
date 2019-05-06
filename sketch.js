@@ -40,7 +40,7 @@ function setup()
     }
 
     paddle = new Paddle(CANVAS_WIDTH / 2, 0.9 * CANVAS_HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT);
-    ball = new Ball(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, BALL_XVEL, BALL_YVEL, BALL_RADIUS, paddle, targets);
+    ball = new Ball(CANVAS_WIDTH / 2, 0.8 * CANVAS_HEIGHT, BALL_XVEL, -BALL_YVEL, BALL_RADIUS, paddle, targets);
 
     gameManager = new GameManager(paddle, ball, targets);
 
@@ -50,13 +50,20 @@ function setup()
 
 function draw() 
 {
-    if (keyIsDown(LEFT_ARROW))
+    if (!gameManager.gameRunning && keyIsDown(32))
     {
-        paddle.moveLeft();
+        gameManager.start();
     }
-    else if (keyIsDown(RIGHT_ARROW))
+    else
     {
-        paddle.moveRight();
+        if (keyIsDown(LEFT_ARROW))
+        {
+            paddle.moveLeft();
+        }
+        else if (keyIsDown(RIGHT_ARROW))
+        {
+            paddle.moveRight();
+        }
     }
 
     background(150, 150, 255);
@@ -78,5 +85,13 @@ function draw()
 
     fill(255);
     textSize(TEXT_SIZE);
-    text("Score: " + gameManager.score + "\nFramerate: " + frameRate().toFixed(1), TEXT_SIZE, 2 * TEXT_SIZE);
+    textAlign(LEFT, TOP);
+    text("Score: " + gameManager.score + "\nFramerate: " + frameRate().toFixed(1), TEXT_SIZE, TEXT_SIZE);
+
+    if (!gameManager.gameRunning)
+    {
+        textSize(2 * TEXT_SIZE);
+        textAlign(CENTER, CENTER);
+        text("... Press SPACE to begin ...", width / 2, height / 2);
+    }
 }

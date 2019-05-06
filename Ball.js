@@ -74,7 +74,7 @@ class Ball extends GameObject
 
         if (gameManager)
         {
-            gameManager.restart();
+            gameManager.reset();
         }
     }
 
@@ -100,7 +100,7 @@ class Ball extends GameObject
                 {
                     gameManager.addScore();
                 }
-                
+
                 break;
             }
         }

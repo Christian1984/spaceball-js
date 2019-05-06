@@ -15,9 +15,15 @@ class GameManager
         this.score += 100;
     }
 
-    restart()
+    start()
     {
+        this.gameRunning = true;
         this.score = 0;
+    }
+
+    reset()
+    {
+        this.gameRunning = false;
 
         this.ball.reset();
         this.paddle.reset();
