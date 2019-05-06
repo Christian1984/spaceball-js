@@ -16,6 +16,7 @@ const TARGET_HEIGHT = 10;
 let ball;
 let paddle;
 let targets;
+let gameManager;
 
 function setup() 
 {
@@ -37,6 +38,8 @@ function setup()
 
     paddle = new Paddle(CANVAS_WIDTH / 2, 0.9 * CANVAS_HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT);
     ball = new Ball(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, BALL_XVEL, BALL_YVEL, BALL_RADIUS, paddle, targets);
+
+    gameManager = new GameManager(paddle, ball, targets);
 
     rectMode(CENTER);
     ellipseMode(RADIUS);
