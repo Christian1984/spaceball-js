@@ -40,22 +40,32 @@ class Ball extends GameObject
         }
     }
 
+    changeHeading()
+    {
+        let dir = random() < 0.5 ? -1 : 1;
+        let angle = dir * random(0.5);
+
+        let tmpVel = this.vel.copy().rotate(angle);
+        let tmpVelSin = abs(sin(tmpVel.heading()));
+
+        if (tmpVelSin > BALL_MIN_SIN)
+        {
+            this.vel = tmpVel;
+        }
+    }
+
     yBounce()
     {
         super.undoUpdate();
-
-        let rand = random(0.8, 1.2);
-        this.vel.x /= rand;
-        this.vel.y *= -rand;
+        this.changeHeading();
+        this.vel.y *= -1;
     }
 
     xBounce()
     {
         super.undoUpdate();
-
-        let rand = random(0.8, 1.2);
-        this.vel.x *= -rand;
-        this.vel.y /= rand;
+        this.changeHeading();
+        this.vel.x *= -1;
     }
 
     die()

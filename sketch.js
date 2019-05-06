@@ -4,6 +4,8 @@ const CANVAS_HEIGHT = 600;
 const BALL_RADIUS = 10;
 const BALL_XVEL = 3;
 const BALL_YVEL = 2;
+const BALL_MAX_ANGLE_CHANGE = 0.5;
+const BALL_MIN_SIN = 0.5;
 
 const PADDLE_WIDTH = 60;
 const PADDLE_HEIGHT = 20;

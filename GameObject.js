@@ -2,33 +2,28 @@ class GameObject
 {
     constructor(xPos, yPos, xVel, yVel)
     {
-        this.startPos = {x: xPos, y: yPos};
-        this.startVel = {x: xVel, y: yVel};
+        this.startPos = createVector(xPos, yPos);
+        this.startVel = createVector(xVel, yVel);
 
-        this.pos = {x: xPos, y: yPos};
-        this.vel = {x: xVel, y: yVel};
-
-        this.alive = true;
+        this.reset();
     }
 
     update()
     {
-        this.pos.x += this.vel.x;
-        this.pos.y += this.vel.y;
+        this.pos.add(this.vel);
     }
     
     reset()
     {
         this.alive = true;
 
-        this.pos = {x: this.startPos.x, y: this.startPos.y};
-        this.vel = {x: this.startVel.x, y: this.startVel.y};
+        this.pos = this.startPos.copy();
+        this.vel = this.startVel.copy();
     }
 
     undoUpdate()
     {
-        this.pos.x -= this.vel.x;
-        this.pos.y -= this.vel.y;
+        this.pos.sub(this.vel);
     }
 
     show()
