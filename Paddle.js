@@ -35,6 +35,7 @@ class Paddle extends GameObject
     show()
     {
         super.show();
+        fill(255);
         rect(this.pos.x, this.pos.y, this.width, this.height);
     }
 }

@@ -4,6 +4,7 @@ class GameObject
     {
         this.pos = {x: xPos, y: yPos};
         this.vel = {x: xVel, y: yVel};
+        this.alive = true;
     }
 
     update()
@@ -12,8 +13,17 @@ class GameObject
         this.pos.y += this.vel.y;
     }
 
-    show()
+    undoUpdate()
     {
-        //console.log("pos", this.pos, "vel", this.vel);
+        this.pos.x -= this.vel.x;
+        this.pos.y -= this.vel.y;
+    }
+
+    show()
+    { }
+
+    die()
+    {
+        this.alive = false;
     }
 }
