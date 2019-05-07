@@ -11,7 +11,11 @@ class Target extends GameObject
     show()
     {
         super.show();
-        fill(this.color.r, this.color.g, this.color.b);
-        rect(this.pos.x, this.pos.y, this.width, this.height);
+
+        if (this.alive)
+        {
+            fill(this.color.r, this.color.g, this.color.b);
+            rect(this.pos.x, this.pos.y, this.width, this.height);
+        }
     }
 }

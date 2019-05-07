@@ -20,10 +20,15 @@ let ball;
 let paddle;
 let targets;
 let gameManager;
+let controller;
+let renderer;
 
 function setup() 
 {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+
+    controller = new KeyboardController();
+    renderer = new Renderer();
 
     let tw = width / (TARGET_COLS + 2);
     let th = TARGET_HEIGHT;
@@ -35,12 +40,17 @@ function setup()
     {
         for (let col = 0; col < TARGET_COLS; col++)
         {
-            targets.push(new Target(col * tw + o, row * th + o, tw, th, { r: 0, g: 255, b: 0 }));
+            let target = new Target(col * tw + o, row * th + o, tw, th, { r: 0, g: 255, b: 0 });
+            targets.push(target);
+            renderer.addShowable(target);
         }
     }
 
     paddle = new Paddle(CANVAS_WIDTH / 2, 0.9 * CANVAS_HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT);
+    renderer.addShowable(paddle);
+
     ball = new Ball(CANVAS_WIDTH / 2, 0.8 * CANVAS_HEIGHT, BALL_XVEL, -BALL_YVEL, BALL_RADIUS, paddle, targets);
+    renderer.addShowable(ball);
 
     gameManager = new GameManager(paddle, ball, targets);
 
@@ -50,17 +60,19 @@ function setup()
 
 function draw() 
 {
-    if (!gameManager.gameRunning && keyIsDown(32))
+    let input = controller.getInput();
+
+    if (!gameManager.gameRunning && input == controller.Input.START)
     {
         gameManager.start();
     }
     else
     {
-        if (keyIsDown(LEFT_ARROW))
+        if (input == controller.Input.LEFT)
         {
             paddle.moveLeft();
         }
-        else if (keyIsDown(RIGHT_ARROW))
+        else if (input == controller.Input.RIGHT)
         {
             paddle.moveRight();
         }
@@ -69,19 +81,17 @@ function draw()
     background(150, 150, 255);
 
     paddle.update();
-    paddle.show();
-
     ball.update();
-    ball.show();
 
     for (let i = 0; i < targets.length; i++)
     {
         if (targets[i].alive)
         {
             targets[i].update();
-            targets[i].show();
         }
     }
+
+    renderer.render();
 
     fill(255);
     textSize(TEXT_SIZE);
