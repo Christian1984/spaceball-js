@@ -12,9 +12,10 @@ class Controller
     }
 
     getInput()
-    {
+    { }
 
-    }
+    show()
+    { }
 }
 
 class KeyboardController extends Controller
@@ -23,6 +24,7 @@ class KeyboardController extends Controller
     {
         super();
     }
+
     getInput()
     {
         super.getInput();
@@ -43,5 +45,36 @@ class KeyboardController extends Controller
         {
             return this.Input.NOTHING;
         }
+    }
+}
+
+class GestureController extends Controller
+{
+    constructor()
+    {
+        super();
+
+        //init ml5 library and model
+        //TODO
+
+        //add keyboard controller to train model
+        //TODO
+    }
+    
+    getInput()
+    {
+        super.getInput();
+
+        //keyboard commands to train model
+        //TODO
+
+        //translate classification to input commands
+        //TODO
+        return this.Input.NOTHING;
+    }
+
+    show()
+    {
+        //show video
     }
 }
