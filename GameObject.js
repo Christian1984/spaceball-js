@@ -37,7 +37,10 @@ class GameObject
     }
 
     show()
-    { }
+    {
+        strokeWeight(2);
+        stroke(0); 
+    }
 
     die()
     {

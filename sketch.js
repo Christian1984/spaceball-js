@@ -2,6 +2,8 @@ const CANVAS_WIDTH = 800;
 const CANVAS_HEIGHT = 600;
 const TEXT_SIZE = 12;
 
+const CONTROLLER_SIZE = 80;
+
 const BALL_RADIUS = 10;
 const BALL_XVEL = 3;
 const BALL_YVEL = 2;
@@ -27,8 +29,10 @@ function setup()
 {
     createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 
-    controller = new KeyboardController();
+    controller = new GestureController();
+    
     renderer = new Renderer();
+    renderer.addShowable(controller);
 
     let tw = width / (TARGET_COLS + 2);
     let th = TARGET_HEIGHT;
@@ -78,8 +82,6 @@ function draw()
         }
     }
 
-    background(150, 150, 255);
-
     paddle.update();
     ball.update();
 
@@ -91,8 +93,10 @@ function draw()
         }
     }
 
+    background(150, 150, 255);
     renderer.render();
 
+    noStroke();
     fill(255);
     textSize(TEXT_SIZE);
     textAlign(LEFT, TOP);
@@ -102,6 +106,6 @@ function draw()
     {
         textSize(2 * TEXT_SIZE);
         textAlign(CENTER, CENTER);
-        text("... Press SPACE to begin ...", width / 2, height / 2);
+        text("... Press SPACE to begin ...", width / 2, 0.1 * height);
     }
 }
